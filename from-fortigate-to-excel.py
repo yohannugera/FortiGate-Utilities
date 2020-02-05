@@ -5,10 +5,10 @@ import pandas as pd
 import numpy as np
 
 ## Setting up static parameters
-FORTIGATE = '172.17.1.3'
+FORTIGATE = '10.10.10.10'
 PORT = '443'
-USERNAME = 'mitsupport'
-PASSWORD = 'M1t_F0rt!'
+USERNAME = 'admin'
+PASSWORD = 'FortiGate001'
 ## DATA_NEEDED = input('Enter details you need:')
 
 BASE_URL = '/api/v2/cmdb'
