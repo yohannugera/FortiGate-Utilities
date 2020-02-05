@@ -58,8 +58,8 @@ trafficshapingpolicy_file = pd.read_excel(config_file,'Trafficshapingpolicies')
 ## Connect to Fortigate and get CSRFTOKEN
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 s = requests.Session()
-bodyhash = {'username': 'admin', 'secretkey': 'Mit_0987'}
-r = s.post('https://172.25.102.199/logincheck', data=bodyhash, verify=False)
+bodyhash = {'username': 'admin', 'secretkey': 'FortiGate001'}
+r = s.post('https://10.10.10.10/logincheck', data=bodyhash, verify=False)
 for cookie in s.cookies:
     try:
         if cookie.name == 'ccsrftoken':
@@ -88,29 +88,24 @@ for x in routes_file.to_dict(orient='records'):
 
 ## Address Objects...
 for x in addr_file.to_dict(orient='records'):
-    ## req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/address',data=str(x))
+    req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/address',data=str(x))
     ## print(x['name'],'creation',req.json()['status'])
-    pass
 
 ## IP Ranges...
 for x in iprange_file.to_dict(orient='records'):
-    ## req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/address',data=str(x))
-    pass
+    req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/address',data=str(x))
 
 ## Address Groups...
 for x in addrgrp_file.to_dict(orient='records'):
-    ## req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/addrgrp',data=str(x))
-    pass
+    req = s.post('https://172.25.102.199/api/v2/cmdb/firewall/addrgrp',data=str(x))
 
 ## Services...
 for x in service_file.to_dict(orient='records'):
-    ## req = s.post('https://172.25.102.199/api/v2/cmdb/firewall.service/custom',data=str(x))
-    pass
+    req = s.post('https://172.25.102.199/api/v2/cmdb/firewall.service/custom',data=str(x))
 
 ## Firewall Groups...
 for x in firewallgrp_file.to_dict(orient='records'):
-    ## req = s.post('https://172.25.102.199/api/v2/cmdb/firewall.service/group',data=str(x))
-    pass
+    req = s.post('https://172.25.102.199/api/v2/cmdb/firewall.service/group',data=str(x))
 
 ## IP Pools...
 for x in ippool_file.to_dict(orient='records'):
